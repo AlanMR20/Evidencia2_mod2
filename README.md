@@ -1,7 +1,5 @@
 # Momento de Retroalimentación: Módulo 2 Análisis y Reporte sobre el desempeño del modelo.
 
-# AÚN NO ESTÁ LISTO
-
 ## Dataset utilizado
 Para esta evidencia recuperaremos una implementación previa que este caso será sobre el dataset de **Fish Market**, donde se hará un análisis del modelo que habíamos seleccionado al final y veremos el tipo de sesgo, varianza, el tipo de ajuste que tiene el modelo y al final utilizaremos una técnica de regularización para mejorar el desempeño del modelo.
 
@@ -27,18 +25,25 @@ $h_{weight}=\theta_1x_{height}+\theta_2x_{width}+\theta_3x_{L123}+\theta_4x_{wid
 
 Podemos ver que los datos predecidos por el modelo realmente se acercan a los valores reales; sin embargo, esta no es la única forma en la que se tiene para decir si nuestro modelo es lo suficientemente bueno como para poder confiar en las estimaciones que nos arroja de los valores. Por lo que vamos a tener que hacer un análisis sobre el sesgo o bias y la varianza de los datos obtenidos del modelo y observar el tipo de ajuste que tiene nuestro modelo.
 
-## Análisis del grado de sesgo o bias
-__Low Bias:__ Weak assumptions regarding the functional form of the mapping of inputs to outputs.
-__High Bias:__ Strong assumptions regarding the functional form of the mapping of inputs to outputs
+## Análisis del grado de sesgo o bias y varianza
+**SESGO O BIAS**
+* __Bajo:__ Supuestos débiles con respecto a la forma funcional de la asignación de entradas a salidas
+* __Alto:__ Fuertes supuestos con respecto a la forma funcional del mapeo de entradas a salidas
 
-## Análisis del grado de varianza
-__Low Variance:__ Small changes to the model with changes to the training dataset.
-__High Variance:__ Large changes to the model with changes to the training dataset.
+**VARIANZA**
+* __Baja:__ Pequeños cambios en el modelo con cambios en el conjunto de datos de entrenamiento
+* __Alta:__ Grandes cambios en el modelo con cambios en el conjunto de datos de entrenamiento
 
-## Explica el nivel de ajuste del modelo: underfitt fitt overfit
+![image](https://user-images.githubusercontent.com/101605777/189572479-00a08a6b-e8e5-4c20-92c0-f16e657bd98c.png)
+## Nivel de ajuste del modelo
+* **Subajustado:** alto sesgo y poca varianza -> error de entrenamiento y prueba alto 
+* **Sobreajustado:** bajo sesgo y alta varianza -> error de  entrenamiento bajo y error de prueba alto
+* **Balanceado:** bajo sesgo y poca varianza (ideal) -> error de entrenamiento y prueba bajo
+
 
 ## Utiliza técnicas de regularización para mejorar el desempeño del modelo
-| Muestra | Tipo |$r^2(Train)$ | $r^2(Test)$ |    ECM    |
+En la siguiente tabla podemos encontrar como es que mejoro o no el modelo (__RL__) con las técnicas de regularización y ver el desempeño del modelo usando los métodos de __sklearn__ de __Lasso__ y __Rigde__ para las técnicas de __L1__ y __L2__ respectivamente para las 5 muestras aleatorias que tomamos.
+| Muestra | Modelo |$r^2(Train)$ | $r^2(Test)$ |    ECM    |
 |---------|----- |-------------|-------------|-----------|
 |1|RL|97.54437019% | 96.62397438%|4253.560749|
 |1|L1|97.54436962%|96.62332606%|4254.377584|
@@ -55,3 +60,5 @@ __High Variance:__ Large changes to the model with changes to the training datas
 |5|RL|97.19346661%| 97.90892849%|1644.081232|
 |5|L1|97.19346615%|97.90913019%|1643.922649|
 |5|L2|97.19346625%| 97.90928554%|1643.800507|
+
+Podemos ver que no hay una gran diferencia diferencia en cuanto al uso de técnicas de regularización tanto los método de L1 y L2 varían entre ellas y nuestro modelo original en a partir de 6 cifras decimales por lo que podemos decir que no hay una mejora tan significativa usando técnicas de regularización específicamente para nuestro, por lo que podemos concluir que nuestro modelo si es muy bueno para predecir datos de nuestro dataset y que por lo tanto es un modelo balanceado ya que posee poca varianza y poco sesgo.
