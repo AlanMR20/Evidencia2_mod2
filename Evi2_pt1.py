@@ -36,15 +36,16 @@ rands = [] #Se van a crear 5 muestras aleatorias para entrenar y probar el model
 for i in range(5):
     r = random.randint(0,1000)
     rands.append(r) #"""
+
 for i in range(len(rands)):
   # Se corren para 5 muestras para cada modelo
-  print("\n\t"*3+"MUESTRA",i+1)
+  print("\t"*4+"MUESTRA",i+1)
   # Separamos un conjunto de datos para entrenar y otro para probar
   X_train, X_test, y_train, y_test = train_test_split(x,y, random_state=rands[i])
   X_train=X_train.values
   X_test = X_test.values
-  y_train = (y_train["Weight"]).values
-  y_test = (y_test["Weight"]).values
+  y_train_bs = (y_train["Weight"]).values
+  y_test_bs = (y_test["Weight"]).values
   # Llamamos a nuestra función para el modelo
   mlr = LinearRegression()
   # Ajuste de nuestro modelo
@@ -56,21 +57,19 @@ for i in range(len(rands)):
   sc_train = r2_score(y_train, y_hat_train)
   sc_test = r2_score(y_test, y_hat_test)
   mse = mean_squared_error(y_test, y_hat_test)
-  print("Regresión Lineal Múltiple")
-  print("R2_Train = "+ "{:.10}".format(sc_train*100)+ "%\tR2_Test = "+"{:.10}".format(sc_test*100)+"%\tECM = "+ "{:.10}".format(mse))
   # Estimation of bias and variance using bias_variance_decomp
-  mse, bias, var = bias_variance_decomp(mlr, X_train, y_train, X_test, y_test, loss='mse', num_rounds=200, random_seed=123)
+  mse_x, bias, var = bias_variance_decomp(mlr, X_train, y_train_bs, X_test, y_test_bs, loss='mse', num_rounds=200, random_seed=123)
   y_pred=mlr.predict(X_test)
-  # summarize results
-  """
-  print('MSE [avg expected loss]: %.3f' % mse)
+  # Resumen de la prueba
   print('Avg Bias: %.3f' % bias)
-  print('Avg Variance: %.3f' % var)"""
-
-  # Regresión L1 (Lasso)
+  print('Avg Variance: %.3f' % var)
+  print("\nRegresión Lineal Múltiple")
+  print("R2_Train = "+ "{:.10}".format(sc_train*100)+ "%\tR2_Test = "+"{:.10}".format(sc_test*100)+"%\tECM = "+ "{:.10}".format(mse))
+  # Hiperparametros para las técnicas de regularización
   a = 0.01
   its = 500
   t = 1e-8
+  # Regresión L1 (Lasso)
   lasso_reg = linear_model.Lasso(alpha=a, max_iter=its, tol=t)
   lasso_reg.fit(X_train,y_train)
   #Predicciónes del modelo
