@@ -35,6 +35,18 @@ Podemos ver que los datos predecidos por el modelo realmente se acercan a los va
 * __Alta:__ Grandes cambios en el modelo con cambios en el conjunto de datos de entrenamiento
 
 ![image](https://user-images.githubusercontent.com/101605777/189572479-00a08a6b-e8e5-4c20-92c0-f16e657bd98c.png)
+
+Estos fueron los promedio de sesgo y varianza de cada una de las muestras para entrenar y probar el modelo:
+|Muestra|Sesgo prom.|Varianza prom.|
+|-------|-----------|--------------|
+|1|4408.923|223.173|
+|2|5774.135|346.702|
+|3|4257.437|220.319|
+|4|4593.347|437.855|
+|5|1588.349|223.119|
+
+Podemos ver que en promedio se tiene menos varianza entre las diferentes pruebas y que puede ser una varianza. Por otro lado,el sesgo promedio entre muestras vemos que varía un poco más por lo que puede tratarse de que nuestro modelo tiene un sesgo un poco alto.
+
 ## Nivel de ajuste del modelo
 * **Subajustado:** alto sesgo y poca varianza -> error de entrenamiento y prueba alto 
 * **Sobreajustado:** bajo sesgo y alta varianza -> error de  entrenamiento bajo y error de prueba alto
