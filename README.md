@@ -1,4 +1,4 @@
-# Momento de Retroalimentación: Módulo 2 Análisis y Reporte sobre el desempeño del modelo.
+# Análisis y Reporte sobre el desempeño del modelo.
 
 ## Dataset utilizado
 Para esta evidencia recuperaremos una implementación previa que este caso será sobre el dataset de **Fish Market**, donde se hará un análisis del modelo que habíamos seleccionado al final y veremos el tipo de sesgo, varianza, el tipo de ajuste que tiene el modelo y al final utilizaremos una técnica de regularización para mejorar el desempeño del modelo.
